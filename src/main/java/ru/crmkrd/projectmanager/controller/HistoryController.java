@@ -2,8 +2,6 @@ package ru.crmkrd.projectmanager.controller;
 
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -11,53 +9,48 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.crmkrd.projectmanager.dto.HistoryDto;
-import ru.crmkrd.projectmanager.entity.History;
-import ru.crmkrd.projectmanager.mapper.HistoryMapper;
-import ru.crmkrd.projectmanager.service.HistoryService;
+import ru.crmkrd.projectmanager.dto.history.HistoryRequestDto;
+import ru.crmkrd.projectmanager.service.impl.HistoryServiceImpl;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RequestMapping("/api/history")
 @RestController
-@Tag(name="History", description="Rest for History")
-public class HistoryController {
-    private final HistoryService historyService;
+@Tag(name= "History", description = "Rest for History")
+public class HistoryController  {
+    private final HistoryServiceImpl historyServiceImpl;
 
-    public HistoryController(HistoryService historyService) {
-        this.historyService = historyService;
+    public HistoryController(HistoryServiceImpl historyServiceImpl) {
+        this.historyServiceImpl = historyServiceImpl;
     }
 
 
     @PostMapping
-    public ResponseEntity<Void> save(@RequestBody @Validated HistoryDto historyDto) {
-        historyService.save(historyDto);
+    public ResponseEntity<Void> save(@RequestBody @Validated HistoryRequestDto historyDto) {
+        historyServiceImpl.save(historyDto);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<HistoryDto> findById(@PathVariable("id") Long id) {
-        HistoryDto history = historyService.findById(id);
+    public ResponseEntity<HistoryRequestDto> findById(@PathVariable("id") Long id) {
+        HistoryRequestDto history = historyServiceImpl.findById(id);
         return ResponseEntity.ok(history);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable("id") Long id) {
-        historyService.deleteById(id);
+        historyServiceImpl.deleteById(id);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/page-query")
-    public ResponseEntity<Page<HistoryDto>> pageQuery(HistoryDto historyDto, @PageableDefault(sort = "createAt", direction = Sort.Direction.DESC) Pageable pageable) {
-        Page<HistoryDto> historyPage = historyService.findByCondition(historyDto, pageable);
+    public ResponseEntity<Page<HistoryRequestDto>> pageQuery(HistoryRequestDto historyDto, @PageableDefault(sort = "createAt", direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<HistoryRequestDto> historyPage = historyServiceImpl.findByCondition(historyDto, pageable);
         return ResponseEntity.ok(historyPage);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> update(@RequestBody @Validated HistoryDto historyDto, @PathVariable("id") Long id) {
-        historyService.update(historyDto, id);
+    public ResponseEntity<Void> update(@RequestBody @Validated HistoryRequestDto historyDto, @PathVariable("id") Long id) {
+        historyServiceImpl.update(historyDto, id);
         return ResponseEntity.ok().build();
     }
 }

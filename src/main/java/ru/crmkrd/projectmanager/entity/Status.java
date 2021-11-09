@@ -1,8 +1,11 @@
 package ru.crmkrd.projectmanager.entity;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
 import javax.persistence.*;
 
 @Entity
+@Hidden
 public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,7 +3,6 @@ package ru.crmkrd.projectmanager.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -11,22 +10,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.crmkrd.projectmanager.dto.RoleDto;
-import ru.crmkrd.projectmanager.entity.Role;
-import ru.crmkrd.projectmanager.mapper.RoleMapper;
-import ru.crmkrd.projectmanager.service.RoleService;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import ru.crmkrd.projectmanager.service.impl.RoleServiceImpl;
 
 @RequestMapping("/role")
 @RestController
 
 @Tag(name="Role", description="Rest for Role")
 public class RoleController {
-    private final RoleService roleService;
+    private final RoleServiceImpl roleService;
 
-    public RoleController(RoleService roleService) {
+    public RoleController(RoleServiceImpl roleService) {
         this.roleService = roleService;
     }
 

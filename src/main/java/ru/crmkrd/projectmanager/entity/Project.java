@@ -1,32 +1,35 @@
 package ru.crmkrd.projectmanager.entity;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Hidden
 public class Project {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "ProjectName", length = 30)
+    @Column(name = "project_name", length = 30)
     private String projectName;
 
-    @Column(name = "Description", length = 120)
+    @Column(name = "description", length = 120)
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "Autor")
+    @JoinColumn(name = "autor")
     private User autor;
 
-    @Column(name = "DateStart")
+    @Column(name = "date_start")
     private LocalDate dateStart;
 
-    @Column(name = "DateEnd")
+    @Column(name = "date_end")
     private LocalDate dateEnd;
 
     @ManyToOne
-    @JoinColumn(name = "Status")
+    @JoinColumn(name = "status")
     private Status status;
 
     public Status getStatus() {

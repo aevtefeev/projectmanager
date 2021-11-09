@@ -1,26 +1,29 @@
 package ru.crmkrd.projectmanager.entity;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
+@Hidden
 public class Reliz {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "Caption", length = 50)
+    @Column(name = "caption", length = 50)
     private String caption;
 
-    @Column(name = "Description", length = 120)
+    @Column(name = "description", length = 120)
     private String description;
 
-    @Column(name = "DateStart")
+    @Column(name = "date_start")
     private LocalDate dateStart;
 
-    @Column(name = "DateEnd")
+    @Column(name = "date_end")
     private LocalDate dateEnd;
 
     public LocalDate getDateEnd() {

@@ -3,7 +3,6 @@ package ru.crmkrd.projectmanager.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -11,21 +10,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.crmkrd.projectmanager.dto.RelizDto;
-import ru.crmkrd.projectmanager.entity.Reliz;
-import ru.crmkrd.projectmanager.mapper.RelizMapper;
-import ru.crmkrd.projectmanager.service.RelizService;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import ru.crmkrd.projectmanager.service.impl.RelizServiceImpl;
 
 @RequestMapping("/reliz")
 @RestController
 @Tag(name="Reliz", description="Rest for Reluiz")
 public class RelizController {
-    private final RelizService relizService;
+    private final RelizServiceImpl relizService;
 
-    public RelizController(RelizService relizService) {
+    public RelizController(RelizServiceImpl relizService) {
         this.relizService = relizService;
     }
 

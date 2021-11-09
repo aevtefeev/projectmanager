@@ -1,33 +1,36 @@
 package ru.crmkrd.projectmanager.entity;
 
+import io.swagger.v3.oas.annotations.Hidden;
+
 import javax.persistence.*;
 
 @Entity
+@Hidden
 public class Task {
     @Id
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "Title", length = 30)
+    @Column(name = "title", length = 30)
     private String title;
 
-    @Column(name = "Descriptoin", length = 120)
+    @Column(name = "descriptoin", length = 120)
     private String descriptoin;
 
     @ManyToOne
-    @JoinColumn(name = "Autor")
+    @JoinColumn(name = "autor")
     private User autor;
 
     @ManyToOne
-    @JoinColumn(name = "Executor")
+    @JoinColumn(name = "executor")
     private User executor;
 
     @ManyToOne
-    @JoinColumn(name = "History")
+    @JoinColumn(name = "history")
     private History history;
 
     @ManyToOne
-    @JoinColumn(name = "Relizes")
+    @JoinColumn(name = "relizes")
     private Reliz relizes;
 
     @ManyToOne

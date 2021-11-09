@@ -3,7 +3,6 @@ package ru.crmkrd.projectmanager.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -11,21 +10,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.crmkrd.projectmanager.dto.ProjectDto;
-import ru.crmkrd.projectmanager.entity.Project;
-import ru.crmkrd.projectmanager.mapper.ProjectMapper;
-import ru.crmkrd.projectmanager.service.ProjectService;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import ru.crmkrd.projectmanager.service.impl.ProjectServiceImp;
 
 @RequestMapping("/project")
 @RestController
 @Tag(name="Project", description="Rest for Project")
 public class ProjectController {
-    private final ProjectService projectService;
+    private final ProjectServiceImp projectService;
 
-    public ProjectController(ProjectService projectService) {
+    public ProjectController(ProjectServiceImp projectService) {
         this.projectService = projectService;
     }
 

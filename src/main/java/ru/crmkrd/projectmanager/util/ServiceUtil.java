@@ -1,10 +1,11 @@
 package ru.crmkrd.projectmanager.util;
 
 import ru.crmkrd.projectmanager.dto.*;
+import ru.crmkrd.projectmanager.dto.history.HistoryRequestDto;
 import ru.crmkrd.projectmanager.entity.*;
 
 public class ServiceUtil {
-    public static void copyProperties(HistoryDto data, History entity) {
+    public static void copyProperties(HistoryRequestDto data, History entity) {
     }
 
     public static void copyProperties(ProjectDto data, Project entity) {

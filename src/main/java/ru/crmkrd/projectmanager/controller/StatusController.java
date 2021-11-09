@@ -3,7 +3,6 @@ package ru.crmkrd.projectmanager.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -11,22 +10,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.crmkrd.projectmanager.dto.StatusDto;
-import ru.crmkrd.projectmanager.entity.Status;
-import ru.crmkrd.projectmanager.mapper.StatusMapper;
-import ru.crmkrd.projectmanager.service.StatusService;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import ru.crmkrd.projectmanager.service.impl.StatusServiceImpl;
 
 @RequestMapping("/status")
 @RestController
 
 @Tag(name="Status", description="Rest for Status")
 public class StatusController {
-    private final StatusService statusService;
+    private final StatusServiceImpl statusService;
 
-    public StatusController(StatusService statusService) {
+    public StatusController(StatusServiceImpl statusService) {
         this.statusService = statusService;
     }
 

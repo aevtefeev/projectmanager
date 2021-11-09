@@ -2,7 +2,6 @@ package ru.crmkrd.projectmanager.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -10,22 +9,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.crmkrd.projectmanager.dto.UserDto;
-import ru.crmkrd.projectmanager.entity.User;
-import ru.crmkrd.projectmanager.mapper.UserMapper;
-import ru.crmkrd.projectmanager.service.UserService;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import ru.crmkrd.projectmanager.service.impl.UserServiceImpl;
 
 @RequestMapping("/user")
 @RestController
 
 @Tag(name="User", description="Rest for User")
 public class UserController {
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
-    public UserController(UserService userService) {
+    public UserController(UserServiceImpl userService) {
         this.userService = userService;
     }
 

@@ -1,10 +1,11 @@
 package ru.crmkrd.projectmanager.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import ru.crmkrd.projectmanager.entity.Role;
 
 import javax.validation.constraints.Size;
 
-//@ApiModel()
+@Schema()
 public class UserDto extends AbstractDto<Long> {
     private Long id;
     @Size(max = 30)

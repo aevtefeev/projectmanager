@@ -1,18 +1,22 @@
-package ru.crmkrd.projectmanager.dto;
+package ru.crmkrd.projectmanager.dto.history;
 
-
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
-//@ApiModel()
-public class HistoryDto extends AbstractDto<Long> {
+
+@Tag(name= "HistoryDTO", description = "Возвращаемые данные")
+public class HistoryRequestDto {
     private Long id;
     @Size(max = 180)
     private String description;
     private LocalDate dateTime;
 
-    public HistoryDto() {
+    public HistoryRequestDto(String description, LocalDate dateTime) {
+        this.description = description;
+        this.dateTime = dateTime;
     }
 
     public void setId(Long id) {

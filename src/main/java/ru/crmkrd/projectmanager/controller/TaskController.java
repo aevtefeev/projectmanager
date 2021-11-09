@@ -3,7 +3,6 @@ package ru.crmkrd.projectmanager.controller;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -11,22 +10,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.crmkrd.projectmanager.dto.TaskDto;
-import ru.crmkrd.projectmanager.entity.Task;
-import ru.crmkrd.projectmanager.mapper.TaskMapper;
-import ru.crmkrd.projectmanager.service.TaskService;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
+import ru.crmkrd.projectmanager.service.impl.TaskServiceImpl;
 
 @RequestMapping("/task")
 @RestController
 
 @Tag(name="Task", description="Rest for Task")
 public class TaskController {
-    private final TaskService taskService;
+    private final TaskServiceImpl taskService;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskServiceImpl taskService) {
         this.taskService = taskService;
     }
 
